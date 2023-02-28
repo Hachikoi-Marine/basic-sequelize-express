@@ -1,7 +1,7 @@
 const { DataTypes, Op } = require("sequelize")
 const sequelize = require("../db")
 
-const Human = sequelize.define("Human", {
+const Home = sequelize.define("Home", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -14,11 +14,11 @@ const Human = sequelize.define("Human", {
   age: {
     type: DataTypes.INTEGER,
     defaultValue: 13
-  },
+  }
 },
   {
     timestamps: false,
   }
 )
 
-module.exports = Human;
+module.exports = Home;
