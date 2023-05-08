@@ -1,12 +1,12 @@
-const Sequelize = require("sequelize")
-require("dotenv").config()
+require("dotenv").config();
+const Sequelize = require("sequelize");
 
-const { DB_USER, DB_PSW, DB_PORT, DB_HOST, DB_NAME } = process.env
-const SEQUELIZE_URL = `postgres://${DB_USER}:${DB_PSW}@${DB_HOST}:${DB_PORT}/${DB_NAME}`
+const { DATABASE_URL } = process.env;
+const SEQUELIZE_URL = DATABASE_URL || "";
 
 const sequelize = new Sequelize(SEQUELIZE_URL, {
   dialect: "postgres",
-/*   logging: true */
-})
+  // logging: true, true by default
+});
 
-module.exports = sequelize
+module.exports = sequelize;

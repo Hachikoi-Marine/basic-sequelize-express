@@ -1,10 +1,9 @@
-const { Router } = require("express")
-const {humanModel} = require("../models/main")
+const { Router } = require("express");
+const { Human } = require("../models");
 
-const humanRouter = Router()
+const humanRouter = Router();
 
 /* GET ALL HUMANS IN DB */
 mainRouter.get("/", (req, res) => {
-res.send("a")
-})
-
+  res.send("a");
+});
