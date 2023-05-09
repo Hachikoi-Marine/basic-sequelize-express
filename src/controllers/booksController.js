@@ -1,4 +1,4 @@
-const { Book } = require("../models/Book");
+const { Book, Human } = require("../models");
 
 const populateBooks = async () => {
   const booksArr = [
@@ -7,7 +7,7 @@ const populateBooks = async () => {
     { title: "The subtitle art of not giving a fuck" },
   ];
 
-  await Book.bulkCreate(booksArr, { include: Recipe });
+  await Book.bulkCreate(booksArr, { include: Human });
   const books = await Book.findAll();
   return books;
 };
