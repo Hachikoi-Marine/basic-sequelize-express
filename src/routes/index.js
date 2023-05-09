@@ -1,23 +1,15 @@
 const { Router } = require("express");
-const { populateBooks } = require("../controllers/booksController");
+const { humanRouter } = require("./humanRouter");
+const { bookRouter } = require("./booksRouter");
 
 const mainRouter = Router();
 
+mainRouter.use("/humans", humanRouter);
+mainRouter.use("/books", bookRouter);
+
+// test the server is doing ok
 mainRouter.get("/ping", (req, res) => {
   res.send("pong");
 });
-
-mainRouter.get("/poop", async (req, res) => {
-  try {
-    const books = await populateBooks("books");
-    res.send(books);
-  } catch (error) {
-    console.log(error);
-    res.status(400).send(error);
-  }
-});
-
-mainRouter.get("/b", (req, res) => {});
-mainRouter.get("/c", (req, res) => {});
 
 module.exports = mainRouter;

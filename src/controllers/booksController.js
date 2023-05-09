@@ -12,6 +12,22 @@ const populateBooks = async () => {
   return books;
 };
 
+const getAllBooks = async () => {
+  const res = await Book.findAll({ include: Human });
+  return res;
+};
+
+const bookGotOwned = async (id) => {
+  const humans = await Human.findAll();
+  const foundBook = Book.findByPk(+id);
+  await foundBook.setHumans(humans);
+
+  const novoBook = await Book.findByPk(+id);
+  return novoBook;
+};
+
 module.exports = {
   populateBooks,
+  getAllBooks,
+  bookGotOwned,
 };
